@@ -99,7 +99,7 @@ class AudioHandler:
 
         # Load graph and place_hoders
         with tf.io.gfile.GFile(self.config['deepspeech_graph_fname'], "rb") as f:
-            graph_def = tf.GraphDef()
+            graph_def = tf.compat.v1.GraphDef()
             graph_def.ParseFromString(f.read())
 
         graph = tf.get_default_graph()
