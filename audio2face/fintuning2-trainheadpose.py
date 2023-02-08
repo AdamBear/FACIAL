@@ -10,8 +10,8 @@ import numpy as np
 
 parser = argparse.ArgumentParser(description='Train_setting')
 parser.add_argument('--audiopath', type=str, default='examples/audio_preprocessed/train1.pkl')
-parser.add_argument('--npzpath', type=str, default='video_preprocess/train1_posenew.npz')
-parser.add_argument('--cvspath', type=str, default = 'video_preprocess/train1_openface/train1_512_audio.csv')
+parser.add_argument('--npzpath', type=str, default='..//train1_posenew.npz')
+parser.add_argument('--cvspath', type=str, default = '..//train1_openface/train1_512_audio.csv')
 parser.add_argument('--pretainpath_gen', type=str, default = 'audio2face/checkpoint/obama/Gen-20-0.0006273046686902202.mdl')
 parser.add_argument('--savepath', type=str, default = './checkpoint/train1')
 opt = parser.parse_args()
