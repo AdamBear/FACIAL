@@ -111,6 +111,7 @@ class AudioHandler:
         n_input = 26
         n_context = 9
 
+        tf.compat.v1.disable_eager_execution()
         processed_audio = copy.deepcopy(audio)
         with tf.compat.v1.Session(graph=graph) as sess:
             for subj in tqdm(audio.keys()):
