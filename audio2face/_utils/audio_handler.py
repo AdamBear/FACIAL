@@ -102,7 +102,7 @@ class AudioHandler:
             graph_def = tf.compat.v1.GraphDef()
             graph_def.ParseFromString(f.read())
 
-        graph = tf.get_default_graph()
+        graph = tf.compat.v1.get_default_graph()
         tf.import_graph_def(graph_def, name="deepspeech")
         input_tensor = graph.get_tensor_by_name('deepspeech/input_node:0')
         seq_length = graph.get_tensor_by_name('deepspeech/input_lengths:0')
@@ -112,7 +112,7 @@ class AudioHandler:
         n_context = 9
 
         processed_audio = copy.deepcopy(audio)
-        with tf.Session(graph=graph) as sess:
+        with tf.compat.v1.Session(graph=graph) as sess:
             for subj in tqdm(audio.keys()):
                 for seq in audio[subj].keys():
                     # print 'process %s - %s' % (subj, seq)
@@ -145,6 +145,6 @@ class AudioHandler:
 
                     processed_audio[subj][seq]['audio'] = np.array(windows)
 
-        tf.reset_default_graph() 
+        tf.compat.v1.reset_default_graph()
         return processed_audio
 
