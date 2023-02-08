@@ -106,9 +106,10 @@ class AudioHandler:
 
         graph = tf.compat.v1.get_default_graph()
         tf.import_graph_def(graph_def, name="deepspeech")
-        input_tensor = graph.get_tensor_by_name('input_node:0')
-        seq_length = graph.get_tensor_by_name('input_lengths:0')
-        layer_6 = graph.get_tensor_by_name('logits:0')
+        print(graph)
+        input_tensor = graph.get_tensor_by_name('deepspeech/input_node:0')
+        seq_length = graph.get_tensor_by_name('deepspeech/input_lengths:0')
+        layer_6 = graph.get_tensor_by_name('deepspeech/logits:0')
 
         n_input = 26
         n_context = 9
