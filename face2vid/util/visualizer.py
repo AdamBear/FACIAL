@@ -54,11 +54,11 @@ class Visualizer():
 
             # Create and write Summary
             #summary = self.tf.compat.v1.Summary(value=img_summaries)
-            summary = self.tf.compat.v1.Summary(value=img_summaries)
+
             #self.writer.add_summary(summary, step)
-            with self.writer.as_default():
-              self.tf.compat.v1.summary.scalar('i not know', summary)
-              self.writer.flush()
+            # with self.writer.as_default():
+            #   self.tf.compat.v1.summary.scalar('i not know', img_summaries)
+            #   self.writer.flush()
 
         if self.use_html: # save images to a html file
             for label, image_numpy in visuals.items():
@@ -104,9 +104,9 @@ class Visualizer():
             for tag, value in errors.items():
                 summary = self.tf.compat.v1.Summary(value=[self.tf.compat.v1.Summary.Value(tag=tag, simple_value=value)])
                 #self.writer.add_summary(summary, step)
-                with self.writer.as_default():
-                    self.tf.compat.v1.summary.scalar('i not know', summary)
-                    self.writer.flush()
+                # with self.writer.as_default():
+                #     self.tf.compat.v1.summary.scalar('i not know', summary)
+                #     self.writer.flush()
 
     # errors: same format as |errors| of plotCurrentErrors
     def print_current_errors(self, epoch, i, errors, t):
